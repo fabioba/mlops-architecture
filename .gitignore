@@ -132,3 +132,7 @@ dmypy.json
 .DS_Store
 
 .env
+
+logs/
+
+plugins/
