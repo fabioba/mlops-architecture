@@ -1,36 +1,38 @@
 # AIRFLOW_MLFLOW_DOCKER
 
 ## Background
-The goal of this project is to create an ecosystem where to run **Data Pipelines** and monitor **Experiments**.
+The goal of this project is to create an ecosystem where to run **Data Pipelines** and monitor **Machine Learning Experiments**.
 
 ## Getting started
 
 ### Docker
-Create `docker-compose.yaml` which is responsible for running `Airflow` components, each on a different container:
+Create `docker-compose.yaml`, which is responsible for running `Airflow` and `MLflow` components. Each of them running on a different container:
 * airflow-webserver
 * airflow-scheduler
 * airflow-worker
 * airflow-triggerer
+* mlflow 
 
-From terminal, run the following command to start Airflow on port 8080:
+Then, from terminal run the following command:
 ```
 docker compose up -d
 ```
 
 ### Airflow
-After running docker container, visit the page: `localhost:8080`
+After running docker containers, visit the page: `localhost:8080`
 ![img](docs/imgs/airflow_home.png)
 
-And log into the Airflow world!
+And take a step into the Airflow world!
 
-Populate the `dags` folder with all the DAGS needed for the project.
+The, create a folder named `dags` and populate it with as many DAGS as you need.
 
 
 ### MLFlow
 On the `docker-compose.yaml` includes the `mlflow` container in the `services` section.
-This container is responsible for running the `MLFlow server` exposed on the `localhost:600`.
+This container is responsible for running the `MLFlow server`, which is exposed on the `localhost:600`.
 ![img](docs/imgs/mlflow_home.png)
 
+#### Connect Airflow to MLflow 
 Open the `example_dag.py` and set the URI of the current MLFlow server(localhost:600)
 ```
 mlflow.set_tracking_uri('http://mlflow:600')
