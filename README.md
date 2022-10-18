@@ -8,7 +8,7 @@
     * [Airflow](#airflow)
     * [MLflow](#mlflow)
 - [Connect Airflow to MLflow](#airflow_and_mlflow)
-
+- [References](#references)
 
 
 <a name="background"/>
@@ -19,7 +19,6 @@ The goal of this project is to create an ecosystem where to run **Data Pipelines
 <a name="tools_overview"/>
 
 ## Tools Overview
-
 From `Airflow` documentation:
 ```
 Apache Airflow is an open-source platform for developing, scheduling, and monitoring batch-oriented workflows
@@ -61,11 +60,12 @@ docker compose up -d
 
 ### Airflow
 In order to access to `Airflow server` visit the page: `localhost:8080`
+
 ![img](docs/imgs/airflow_home.png)
 
 And take a step into `Airflow` world!
 
-The, to start creating DAGS initialize an empty folder named `dags` and populate it with as many scripts as you need.
+To start creating DAGS initialize an empty folder named `dags` and populate it with as many scripts as you need.
 ```bash
 └── dags
      └── example_dag.py
@@ -74,27 +74,25 @@ The, to start creating DAGS initialize an empty folder named `dags` and populate
 <a name="mlflow"/>
 
 ### MLFlow
-To monitoring the experiment through `MLFlow server`, visit the page: `localhost:600`.
+In order to monitor `MLflow experiments` through its server, visit the page: `localhost:600`
+
 ![img](docs/imgs/mlflow_home.png)
 
 <a name="airflow_and_mlflow"/>
 
 ## Connect Airflow to MLflow 
-To Open the `example_dag.py` and set the URI of the current MLFlow server(localhost:600)
+To establish a connection between `Airflow` and `MLflow`, define the URI of the `MLflow server`:
 ```
 mlflow.set_tracking_uri('http://mlflow:600')
 ```
 
-After updating the URI of the MLFlow server, create a new connection on `Airflow`.
-
-### Tech Stack
-* Airflow
-* MLflow
-* Docker
-* Python
+After that, create a new connection on `Airflow` that points to that port.
+<img width="1418" alt="image" src="https://user-images.githubusercontent.com/31510474/196529307-3f2df479-a11b-4a0c-bf73-090b82024907.png">
 
 
-### References
+<a name="references"/>
+
+## References
 * [Airflow Docker](https://airflow.apache.org/docs/apache-airflow/2.0.1/start/docker.html)
 * [What is Airflow?](https://airflow.apache.org/docs/apache-airflow/stable/index.html)
 * [MLflow](https://mlflow.org/docs/latest/index.html)
